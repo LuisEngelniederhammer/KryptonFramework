@@ -4,8 +4,6 @@ namespace Krypton;
 
 require_once 'Database.php';
 
-use Krypton\Database;
-
 class System
 {
 

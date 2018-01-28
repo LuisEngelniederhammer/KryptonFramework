@@ -1,11 +1,20 @@
 <?php
-session_start();
+session_start ();
 
-require_once 'Krypton/Page.php';
+require_once 'Krypton/Router.php';
 
-use Krypton\Page;
+$Router = new Krypton\Router ();
 
-new Page();
+$Router->add ( '/page/([0-9]*)', function ($id)
+{
+	require_once 'Krypton/Page.php';
+	new Krypton\Page ();
+} );
+
+$Router->run ();
+
+
 ?>
+
 
 

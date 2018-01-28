@@ -17,7 +17,7 @@ class HTMLTemplateParser
 	 *
 	 * @param string $filename        	
 	 * @param bool $bUSEREFERENCE        	
-	 * @throws Exception
+	 * @throws \Exception
 	 *
 	 */
 	public function __construct(string $filename, bool $bUSE_INTERNAL_COPY = false)

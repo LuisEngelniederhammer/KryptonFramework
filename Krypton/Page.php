@@ -5,8 +5,6 @@ namespace Krypton;
 require_once __DIR__ . DIRECTORY_SEPARATOR. 'Database.php';
 require_once __DIR__ . DIRECTORY_SEPARATOR. 'System.php';
 
-use Krypton\Database;
-
 
 class Page
 {
