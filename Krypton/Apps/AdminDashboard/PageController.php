@@ -4,13 +4,10 @@ namespace Krypton\Apps\AdminDashboard;
 
 require_once 'Controller.php';
 require_once 'Krypton/HTMLTemplateParser.php';
-require_once 'Krypton/URIQueryController.php';
 require_once 'Krypton/System.php';
 
 
-use Krypton\Apps\AdminDashboard\Controller;
 use Krypton\HTMLTemplateParser;
-use Krypton\URIQueryController;
 use Krypton\System;
 
 
@@ -33,7 +30,7 @@ class PageController extends Controller
 				$page = $this->get ( $_GET ['id'] );
 				$HTMLTemplateParser = new HTMLTemplateParser ( __DIR__ . DIRECTORY_SEPARATOR . 'templates/editPage.tpl' );
 				
-				$uri = URIQueryController::get ();
+				
 				$uri->query ['action'] = 'process';
 				
 				$HTMLTemplateParser->assign ( 'POST_ACTION', $uri->build () );

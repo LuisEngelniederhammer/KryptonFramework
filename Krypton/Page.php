@@ -2,21 +2,18 @@
 
 namespace Krypton;
 
-require_once __DIR__ . DIRECTORY_SEPARATOR. 'Database.php';
-require_once __DIR__ . DIRECTORY_SEPARATOR. 'System.php';
-
-
+require_once __DIR__ . DIRECTORY_SEPARATOR . 'Database.php';
+require_once __DIR__ . DIRECTORY_SEPARATOR . 'System.php';
 class Page
 {
 	private $pageID;
 	private $db;
-
-	public function __construct()
+	public function __construct(int $id)
 	{
 		$this->db = new Database ();
-		if (isset ( $_GET ['pageid'] ) && $this->exists ( $_GET ['pageid'] ))
+		if (isset ( $id ) && $this->exists ( $id ))
 		{
-			$this->pageID = ( int ) $_GET ['pageid'];
+			$this->pageID = ( int ) $id;
 		}
 		else
 		{
@@ -26,7 +23,6 @@ class Page
 		$result = $this->db->query ( 'SELECT * FROM pages WHERE id="' . $this->pageID . '"' );
 		$arr = $result->fetchArray ();
 		
-
 		echo '<title>' . $arr ['name'] . '</title>';
 		
 		$roles = json_decode ( $arr ['roles'], true );
@@ -63,13 +59,11 @@ class Page
           ';
 		}
 	}
-
 	private function exists($id): bool
 	{
 		// @FIXME always returns true
 		$result = $this->db->query ( 'SELECT * FROM pages WHERE id="' . ( int ) $id . '"' );
 		return ( bool ) $result->fetchArray ();
 	}
-
 }
 ?>

@@ -23,7 +23,7 @@ class Login implements App
 	{
 		if (! isset ( $_POST ['user'] ) || ! isset ( $_POST ['password'] ))
 		{
-			System::setURL ( System::getDefaultPage (), 0, "response=login_fail_no_data_sent" );
+			System::setURL(System::getDefaultPage(),0,['response','login_fail_no_data_sent']);
 		}
 		$db = new Database ();
 		
@@ -33,7 +33,7 @@ class Login implements App
 		$arr = $result->fetchArray ();
 		if (! $arr)
 		{
-			System::setURL ( System::getDefaultPage (), 0, "response=login_fail_user_inexistent" );
+			System::setURL ( System::getDefaultPage (), 0, ['response','login_fail_user_inexistent'] );
 			die ();
 		}
 		
@@ -43,12 +43,12 @@ class Login implements App
 			$_SESSION ['Client.password'] = $arr ['password'];
 			$_SESSION ['Client.name'] = $arr ['name'];
 			$_SESSION ['Client.role'] = $arr ['role'];
-			System::setURL ( System::getDefaultPage (), 0, "response=login_success" );
+			System::setURL ( System::getDefaultPage (), 0, ['response','login_success'] );
 			die ();
 		}
 		else
 		{
-			System::setURL ( System::getDefaultPage (), 0, "response=login_fail_wrong_user_or_password" );
+			System::setURL ( System::getDefaultPage (), 0, ['response','login_fail_wrong_user_or_password']);
 			die ();
 		}
 	}
